@@ -1,7 +1,7 @@
 // Site configuration
 export const SITE = {
   title: 'JDG Mineração',
-  description: 'Leading provider of optimized logistics and manufacturing solutions with state-of-the-art facilities and industry expertise.',
+  description: 'Liderando o setor de mineração de areia no sul do Brasil.',
   url: 'https://yourdomain.com',
   author: 'JDG Mineração',
 } as const;
