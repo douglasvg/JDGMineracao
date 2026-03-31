@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTAFinal from '../components/home/CTAFinal.astro';
+import { Phone, Clock, Car, ParkingSquare, ArrowUpRight } from 'lucide-react';
+
+const pontos = [
+  {
+    nome: 'Depósito União da Vitória',
+    tipo: 'deposito',
+    endereco: 'BR 153, s/n, Sala 01',
+    bairro: 'Bairro São Gabriel',
+    cidade: 'União da Vitória – PR',
+    cep: 'CEP 84.602-450',
+    telefone: '(49) 000000000',
+    horario: 'Seg–Sex, 07h às 17h',
+    maps: 'https://maps.app.goo.gl/WjSmHKeNFWyzLp756',
+    lat: -26.218424,
+    lng: -51.131875,
+  },
+];
+
+const tipoConfig = {
+  deposito: {
+    label: 'Depósito',
+    badgeClass: 'bg-[#eeeef7] text-[#393e92]',
+  },
+  extracao: {
+    label: 'Extração',
+    badgeClass: 'bg-[#fef3e2] text-[#C9922A]',
+  },
+} as const;
+
+---
+
+<BaseLayout
+  title="Localidades | JDG Mineração"
+  description="Conheça os pontos de depósito e extração da JDG Mineração para retirada rápida e eficiente."
+>
+  <section class="bg-[#0D1B2A]">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8 lg:py-28">
+      <div class="max-w-4xl">
+        <span class="mb-6 inline-flex rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+          Nossas Localidades
+        </span>
+        <h1 class="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+          Onde Estamos
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
+          Conheça nossos pontos de depósito e extração. Estrutura organizada para retirada rápida e
+          eficiente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-8">
+    <div class="mx-auto flex max-w-7xl flex-wrap gap-3 px-4 sm:px-6 lg:px-8">
+      <button
+        type="button"
+        class="inline-flex items-center rounded-full border border-[#393e92] bg-[#393e92] px-5 py-2 text-sm font-semibold text-white"
+      >
+        Todos
+      </button>
+      <button
+        type="button"
+        class="inline-flex items-center rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-semibold text-slate-700"
+      >
+        Depósito
+      </button>
+      <button
+        type="button"
+        class="inline-flex items-center rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-semibold text-slate-700"
+      >
+        Extração
+      </button>
+    </div>
+  </section>
+
+  <section class="bg-white pb-20 pt-4 sm:pb-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-5 lg:items-start">
+        <div class="space-y-5 lg:col-span-2">
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#393e92] hover:shadow-lg">
+            <span class="inline-flex rounded-full bg-[#eeeef7] px-4 py-2 text-sm font-semibold text-[#393e92]">
+              Depósito
+            </span>
+
+            <h2 class="mt-5 text-2xl font-bold text-slate-900">
+              Depósito União da Vitória
+            </h2>
+
+            <div class="mt-5 space-y-1 text-base text-slate-600">
+              <p>BR 153, s/n, Sala 01</p>
+              <p>Bairro São Gabriel</p>
+              <p>União da Vitória – PR</p>
+              <p>CEP 84.602-450</p>
+            </div>
+
+            <div class="my-6 h-px bg-slate-200"></div>
+
+            <div class="space-y-4 text-sm text-slate-700">
+              <div class="flex items-start gap-3">
+                <div class="mt-0.5 rounded-lg bg-[#eeeef7] p-2 text-[#393e92]">
+                  <Phone className="h-4 w-4" />
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900">Telefone</p>
+                  <p>(49) 000000000</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="mt-0.5 rounded-lg bg-[#eeeef7] p-2 text-[#393e92]">
+                  <Clock className="h-4 w-4" />
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900">Horário</p>
+                  <p>Seg–Sex, 07h às 17h</p>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="https://maps.app.goo.gl/WjSmHKeNFWyzLp756"
+              target="_blank"
+              rel="noreferrer"
+              class="mt-6 inline-flex items-center justify-center rounded-lg border border-[#393e92] px-5 py-3 text-sm font-semibold text-[#393e92] transition-colors hover:bg-[#393e92] hover:text-white"
+            >
+              Ver no Mapa
+              <ArrowUpRight className="ml-2 h-4 w-4" />
+            </a>
+          </article>
+        </div>
+
+        <div class="lg:col-span-3">
+          <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
+            <iframe
+              src="https://www.google.com/maps?q=-26.218424,-51.131875&z=15&output=embed"
+              width="100%"
+              height="100%"
+              style="border:0; border-radius: 12px; min-height: 300px;"
+              class="min-h-[300px] lg:min-h-[500px]"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa de Depósito União da Vitória"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#f8f9fa] py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">
+          Como Chegar
+        </h2>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="mb-4 inline-flex rounded-xl bg-[#eeeef7] p-3 text-[#393e92]">
+            <Car className="h-6 w-6" />
+          </div>
+          <h3 class="text-xl font-bold text-slate-900">De Carro</h3>
+          <p class="mt-3 text-slate-600">
+            Acesso direto pela BR-153. Entrada sinalizada no Bairro São Gabriel, União da Vitória.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="mb-4 inline-flex rounded-xl bg-[#fef3e2] p-3 text-[#C9922A]">
+            <ParkingSquare className="h-6 w-6" />
+          </div>
+          <h3 class="text-xl font-bold text-slate-900">Estacionamento</h3>
+          <p class="mt-3 text-slate-600">
+            Área para manobra de caminhões e veículos de grande porte disponível.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="mb-4 inline-flex rounded-xl bg-slate-100 p-3 text-slate-700">
+            <Clock className="h-6 w-6" />
+          </div>
+          <h3 class="text-xl font-bold text-slate-900">Horário de Retirada</h3>
+          <p class="mt-3 whitespace-pre-line text-slate-600">
+            Segunda a Sexta
+            <br />
+            das 07h às 17h.
+            <br />
+            Chegue com antecedência.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTAFinal />
+</BaseLayout>

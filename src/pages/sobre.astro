@@ -1,0 +1,269 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import CTAFinal from '@components/home/CTAFinal.astro';
+import {
+  Target,
+  Eye,
+  Heart,
+  Check,
+  Mountain,
+  Filter,
+  PackageCheck,
+  MapPin,
+  Clock,
+} from 'lucide-react';
+import fotoJovelci from '../../images/Jovelci Domingos Gomes.jpg';
+import imgNossaHistoria from '../../images/JDG Mineração Bandeira.jpeg';
+
+const pageTitle = 'Sobre Nós | JDG Mineração';
+const pageDescription =
+  'Conheça a JDG Mineração: propósito, valores e compromisso com o fornecimento de areia para a construção civil em União da Vitória, PR.';
+
+// Adicione os membros da equipe aqui
+const equipe: Array<{
+  nome: string;
+  cargo: string;
+  frase?: string;
+  foto: string;
+}> = [
+  {
+    nome: 'Jovelci Domingos Gomes',
+    cargo: 'Fundador / Diretor Presidente',
+    frase: 'O futuro do homem está em seu trabalho',
+    foto: fotoJovelci.src,
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- 1. Hero -->
+  <section class="bg-[#0D1B2A] px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <div class="container mx-auto max-w-4xl text-center">
+      <p
+        class="mb-6 inline-block rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#C9922A]"
+      >
+        Sobre Nós
+      </p>
+      <h1 class="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-[2.75rem]">
+        Mais que Areia —<br />
+        <span class="text-white/95">É Compromisso com Sua Obra</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/75 md:text-xl">
+        Nascemos para simplificar o fornecimento de areia para a construção civil. Com agilidade,
+        transparência e compromisso em cada entrega.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. Nossa História -->
+  <section class="bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
+        <div class="order-1 lg:order-none">
+          <img
+            src={imgNossaHistoria.src}
+            alt="JDG Mineração — bandeira da empresa"
+            class="h-[280px] w-full rounded-xl object-cover shadow-lg sm:h-[360px] lg:h-full lg:min-h-[380px]"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="order-2 space-y-6">
+          <p
+            class="inline-block rounded-full border border-[#393e92]/20 bg-[#393e92]/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#393e92]"
+          >
+            Nossa História
+          </p>
+          <h2 class="text-3xl font-bold text-[#0D1B2A] md:text-4xl">
+            Fundada com um propósito claro
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              A JDG Mineração nasceu da identificação de uma necessidade real no setor da construção
+              civil: acesso a areia de qualidade, com atendimento ágil e fornecimento confiável.
+            </p>
+            <p>
+              Atuamos na extração e comercialização de areia em três granulometrias — fina, média e
+              grossa — atendendo construtoras, empreiteiras e obras de todos os portes na região de
+              União da Vitória, PR.
+            </p>
+            <p>
+              Nossa operação é estruturada para garantir disponibilidade de produto, rastreabilidade e
+              respeito ao meio ambiente em cada etapa do processo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Missão, Visão e Valores -->
+  <section class="bg-[#f8f9fa] px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+    <div class="container mx-auto max-w-6xl">
+      <h2 class="mb-12 text-center text-3xl font-bold text-[#0D1B2A] md:text-4xl">
+        O que nos guia
+      </h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <article class="rounded-xl border border-slate-200/80 bg-white p-8 shadow-sm">
+          <Target className="mb-5 h-10 w-10" style={{ color: '#393e92' }} aria-hidden="true" />
+          <h3 class="mb-3 text-xl font-bold text-[#0D1B2A]">Missão</h3>
+          <p class="text-slate-600 leading-relaxed">
+            Fornecer areia de qualidade para a construção civil, com agilidade, transparência e
+            compromisso com nossos clientes.
+          </p>
+        </article>
+        <article class="rounded-xl border border-slate-200/80 bg-white p-8 shadow-sm">
+          <Eye className="mb-5 h-10 w-10" style={{ color: '#C9922A' }} aria-hidden="true" />
+          <h3 class="mb-3 text-xl font-bold text-[#0D1B2A]">Visão</h3>
+          <p class="text-slate-600 leading-relaxed">
+            Ser referência no fornecimento de agregados na região Sul do Brasil, reconhecidos pela
+            qualidade do produto e excelência no atendimento.
+          </p>
+        </article>
+        <article class="rounded-xl border border-slate-200/80 bg-white p-8 shadow-sm">
+          <Heart className="mb-5 h-10 w-10" style={{ color: '#393e92' }} aria-hidden="true" />
+          <h3 class="mb-3 text-xl font-bold text-[#0D1B2A]">Valores</h3>
+          <ul class="space-y-3">
+            {['Transparência', 'Agilidade', 'Comprometimento'].map((item) => (
+              <li class="flex items-center gap-2 text-slate-600">
+                <Check className="h-5 w-5 shrink-0" style={{ color: '#393e92' }} aria-hidden="true" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Como Operamos -->
+  <section class="bg-[#0D1B2A] px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+    <div class="container mx-auto max-w-6xl">
+      <div class="mb-12 text-center">
+        <h2 class="text-3xl font-bold text-white md:text-4xl">Como Operamos</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-white/75">
+          Da extração à disponibilização, cada etapa é pensada para garantir qualidade e eficiência.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
+        <div class="text-center">
+          <div class="mb-4 flex justify-center">
+            <Mountain className="h-10 w-10" style={{ color: '#C9922A' }} aria-hidden="true" />
+          </div>
+          <h3 class="mb-3 text-lg font-bold text-white">Extração Controlada</h3>
+          <p class="text-white/70 leading-relaxed">
+            Retiramos a areia com equipamentos modernos e dentro das normas ambientais vigentes.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="mb-4 flex justify-center">
+            <Filter className="h-10 w-10" style={{ color: '#C9922A' }} aria-hidden="true" />
+          </div>
+          <h3 class="mb-3 text-lg font-bold text-white">Classificação Rigorosa</h3>
+          <p class="text-white/70 leading-relaxed">
+            Cada lote é peneirado e classificado por granulometria para garantir consistência entre
+            pedidos.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="mb-4 flex justify-center">
+            <PackageCheck className="h-10 w-10" style={{ color: '#C9922A' }} aria-hidden="true" />
+          </div>
+          <h3 class="mb-3 text-lg font-bold text-white">Disponibilização Ágil</h3>
+          <p class="text-white/70 leading-relaxed">
+            Produto sempre disponível para retirada, com estrutura organizada e atendimento rápido.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Nossa Equipe -->
+  <section class="bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+    <div class="container mx-auto max-w-6xl">
+      <div class="mb-12 text-center">
+        <p
+          class="mb-4 inline-block rounded-full border border-[#393e92]/20 bg-[#393e92]/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#393e92]"
+        >
+          Nossa Equipe
+        </p>
+        <h2 class="text-3xl font-bold text-[#0D1B2A] md:text-4xl">As Pessoas por Trás da JDG</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+          Um time comprometido com a qualidade e o atendimento.
+        </p>
+      </div>
+      {equipe.length > 0 && (
+        <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          {equipe.map((membro) => (
+            <article class="rounded-xl border border-slate-200/80 bg-[#f8f9fa] p-8 text-center shadow-sm">
+              <img
+                src={membro.foto}
+                alt={membro.nome}
+                class="mx-auto h-32 w-32 rounded-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3 class="mt-5 text-lg font-bold text-[#0D1B2A]">{membro.nome}</h3>
+              <p class="mt-1 text-sm text-slate-500">{membro.cargo}</p>
+              <div class="mx-auto my-5 h-px w-12 bg-[#C9922A]/40" />
+              {membro.frase && <p class="text-sm text-slate-600 leading-relaxed">{membro.frase}</p>}
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- 6. Localização rápida -->
+  <section class="bg-[#f8f9fa] px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">
+        <div class="flex flex-col justify-center">
+          <p
+            class="mb-4 inline-block w-fit rounded-full border border-[#393e92]/20 bg-[#393e92]/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#393e92]"
+          >
+            Onde Estamos
+          </p>
+          <h2 class="text-3xl font-bold text-[#0D1B2A] md:text-4xl">União da Vitória, PR</h2>
+          <div class="mt-8 space-y-6 text-slate-600">
+            <div class="flex gap-3">
+              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#393e92]" aria-hidden="true" />
+              <div class="space-y-1 text-sm leading-relaxed sm:text-base">
+                <p>BR 153, s/n, Sala 01</p>
+                <p>Bairro São Gabriel</p>
+                <p>União da Vitória – PR, CEP 84.602-450</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <Clock className="mt-0.5 h-5 w-5 shrink-0 text-[#393e92]" aria-hidden="true" />
+              <p class="text-sm sm:text-base">Seg–Sex, 07h às 17h</p>
+            </div>
+          </div>
+          <a
+            href="https://maps.app.goo.gl/WjSmHKeNFWyzLp756"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-8 inline-flex w-fit items-center justify-center rounded-lg bg-[#393e92] px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-[#2e3275]"
+          >
+            Ver no Mapa
+          </a>
+        </div>
+        <div class="min-h-[320px] w-full overflow-hidden rounded-xl shadow-lg">
+          <iframe
+            title="Mapa — JDG Mineração, União da Vitória, PR"
+            src="https://www.google.com/maps?q=-26.218424,-51.131875&z=15&output=embed"
+            width="100%"
+            height="320"
+            style="border:0;border-radius:12px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="h-[320px] w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTAFinal />
+</BaseLayout>

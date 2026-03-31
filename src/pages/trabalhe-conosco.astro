@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrabalheConosco from '../components/react/TrabalheConosco';
+---
+
+<BaseLayout
+  title="Trabalhe Conosco | JDG Mineração"
+  description="Veja as vagas abertas da JDG Mineração e envie sua candidatura para fazer parte do nosso time."
+>
+  <section class="bg-[#0D1B2A]">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8 lg:py-28">
+      <div class="max-w-4xl">
+        <span class="mb-6 inline-flex rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+          Trabalhe Conosco
+        </span>
+        <h1 class="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+          Faça Parte do Nosso Time
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
+          Buscamos pessoas comprometidas e com vontade de crescer junto com a JDG Mineração. Veja
+          nossas vagas abertas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <TrabalheConosco client:load />
+</BaseLayout>

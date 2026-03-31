@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import escavadeiraJdgImg from '../../../images/escavadeira-jdg-mineração.png';
+---
+
+<section class="py-24 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+      <div class="lg:col-span-6 xl:col-span-5">
+        <div class="inline-block px-4 py-2 mb-5 bg-[#eeeef7] text-[#393e92] text-sm font-semibold rounded-full">
+          Sobre Nós
+        </div>
+
+        <h2 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-6">
+          A forca da
+          <span class="block text-[#393e92]">
+            JDG Mineração
+          </span>
+        </h2>
+
+        <p class="text-lg text-slate-600 leading-relaxed mb-4">
+          Unimos experiencia operacional, tecnologia e responsabilidade ambiental para entregar minerais
+          com qualidade e previsibilidade em cada etapa.
+        </p>
+        <p class="text-lg text-slate-600 leading-relaxed mb-8">
+          Nossa equipe atua com foco total em seguranca, produtividade e compromisso com o cliente, da
+          extracao ao abastecimento final.
+        </p>
+
+        <a
+          href="/sobre-nos"
+          class="inline-flex items-center px-7 py-3.5 text-base font-semibold text-white bg-[#393e92] hover:bg-[#2e3275] rounded-lg shadow-lg hover:shadow-xl transition-all group"
+        >
+          Conheça nossa historia
+          <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="lg:col-span-6 xl:col-span-7">
+        <div class="relative overflow-hidden rounded-3xl shadow-2xl ring-1 ring-slate-900/10">
+          <Image
+            src={escavadeiraJdgImg}
+            alt="Escavadeira JDG em operação"
+            class="w-full h-[320px] sm:h-[420px] object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="absolute inset-0 bg-linear-to-tr from-slate-900/35 via-transparent to-[#393e92]/20"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

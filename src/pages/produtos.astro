@@ -1,0 +1,260 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTAFinal from '../components/home/CTAFinal.astro';
+import areiaFinaImg from '../../images/areia-fina.png';
+import areiaMediaImg from '../../images/areia-media.png';
+import areiaGrossaImg from '../../images/areia-grossa-produtos.png';
+
+const products = [
+  {
+    name: 'Areia Fina',
+    badge: 'Granulometria Fina',
+    badgeTextColor: '#393e92',
+    badgeBgColor: '#eeeef7',
+    accentColor: '#393e92',
+    bgClass: 'bg-white',
+    image: areiaFinaImg,
+    imageAlt: 'Aplicação de reboco com areia fina em parede',
+    imagePosition: 'left',
+    description:
+      'A areia fina possui grãos menores e uniformes, resultando em misturas mais homogêneas e acabamentos mais lisos. Ideal para trabalhos que exigem precisão e suavidade na aplicação.',
+    applications: [
+      'Reboco interno e externo',
+      'Argamassa de assentamento',
+      'Massa fina e acabamentos',
+      'Rejunte e pastilhas',
+    ],
+    specs: [
+      ['Granulometria', '0,06 mm a 0,2 mm'],
+      ['Cor', 'Bege claro'],
+      ['Umidade', 'Baixa'],
+      ['Aplicação ideal', 'Acabamentos e revestimentos'],
+    ],
+  },
+  {
+    name: 'Areia Média',
+    badge: 'Granulometria Média',
+    badgeTextColor: '#C9922A',
+    badgeBgColor: '#fbf3e1',
+    accentColor: '#C9922A',
+    bgClass: 'bg-[#f8f9fa]',
+    image: areiaMediaImg,
+    imageAlt: 'Concreto sendo despejado com areia média',
+    imagePosition: 'right',
+    description:
+      'Versátil e equilibrada, a areia média é a mais utilizada em obras. Sua granulometria intermediária oferece boa trabalhabilidade e resistência para a maioria das aplicações da construção civil.',
+    applications: [
+      'Concreto convencional',
+      'Assentamento de blocos e tijolos',
+      'Contrapiso e regularização',
+      'Argamassa estrutural',
+    ],
+    specs: [
+      ['Granulometria', '0,2 mm a 0,6 mm'],
+      ['Cor', 'Bege dourado'],
+      ['Umidade', 'Média'],
+      ['Aplicação ideal', 'Concreto e assentamento'],
+    ],
+  },
+  {
+    name: 'Areia Grossa',
+    badge: 'Granulometria Grossa',
+    badgeTextColor: '#0D1B2A',
+    badgeBgColor: '#e7edf4',
+    accentColor: '#0D1B2A',
+    bgClass: 'bg-white',
+    image: areiaGrossaImg,
+    imageAlt: 'Estrutura de fundação com ferragem e areia grossa',
+    imagePosition: 'left',
+    description:
+      'Com grãos maiores e maior resistência mecânica, a areia grossa é indispensável em obras estruturais. Garante a resistência necessária para fundações e concreto armado de alto desempenho.',
+    applications: [
+      'Fundações e sapatas',
+      'Concreto armado estrutural',
+      'Obras de infraestrutura',
+      'Drenagem e aterro',
+    ],
+    specs: [
+      ['Granulometria', '0,6 mm a 2,0 mm'],
+      ['Cor', 'Bege escuro / acinzentado'],
+      ['Umidade', 'Alta retenção'],
+      ['Aplicação ideal', 'Estruturas e fundações'],
+    ],
+  },
+];
+
+const comparisonRows = [
+  ['Granulometria', '0,06-0,2mm', '0,2-0,6mm', '0,6-2,0mm'],
+  ['Uso principal', 'Acabamento', 'Concreto', 'Estrutura'],
+  ['Resistência', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐⭐'],
+  ['Trabalhabilidade', '⭐⭐⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐'],
+  ['Indicado para', 'Reboco', 'Assentamento', 'Fundação'],
+];
+---
+
+<BaseLayout
+  title="Produtos | JDG Mineração"
+  description="Conheça as areias fina, média e grossa da JDG Mineração para acabamento, assentamento e estruturas."
+>
+  <section class="bg-[#0D1B2A]">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8 lg:py-28">
+      <div class="max-w-4xl">
+        <span
+          class="mb-6 inline-flex rounded-full px-4 py-2 text-sm font-semibold"
+          style={`background-color: rgba(57, 62, 146, 0.18); color: #ffffff;`}
+        >
+          Nossos Produtos
+        </span>
+        <h1
+          class="max-w-4xl text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl"
+          style={`font-family: 'Barlow Condensed', sans-serif;`}
+        >
+          Escolha a Areia Certa para Cada Etapa
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
+          Trabalhamos com três granulometrias selecionadas para atender desde o acabamento fino até
+          as estruturas mais robustas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    {products.map((product, index) => (
+      <div class={`border-b border-slate-200/80 ${product.bgClass}`}>
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+          <div class={product.imagePosition === 'right' ? 'lg:order-2' : ''}>
+            <Image
+              src={product.image}
+              alt={product.imageAlt}
+              class="h-[300px] w-full object-cover lg:h-full lg:min-h-[500px]"
+              loading={index === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+          </div>
+
+          <div class={product.imagePosition === 'right' ? 'lg:order-1' : ''}>
+            <div class="flex h-full items-center px-4 py-12 sm:px-8 lg:px-12 lg:py-16 xl:px-16">
+              <div class="w-full max-w-2xl">
+                <span
+                  class="mb-5 inline-flex rounded-full px-4 py-2 text-sm font-semibold"
+                  style={`background-color: ${product.badgeBgColor}; color: ${product.badgeTextColor};`}
+                >
+                  {product.badge}
+                </span>
+
+                <h2
+                  class="text-4xl font-bold leading-tight text-slate-900 sm:text-5xl"
+                  style={`font-family: 'Barlow Condensed', sans-serif;`}
+                >
+                  {product.name}
+                </h2>
+
+                <p class="mt-6 text-lg leading-8 text-slate-600">
+                  {product.description}
+                </p>
+
+                <div class="mt-8">
+                  <h3
+                    class="text-2xl font-bold text-slate-900"
+                    style={`font-family: 'Barlow Condensed', sans-serif;`}
+                  >
+                    Aplicações indicadas
+                  </h3>
+                  <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+                    {product.applications.map((application) => (
+                      <li class="flex items-start gap-3 text-base text-slate-700">
+                        <span class="mt-0.5 shrink-0" style={`color: ${product.accentColor};`}>
+                          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.704 5.29a1 1 0 010 1.42l-7.25 7.25a1 1 0 01-1.415 0l-3.25-3.25a1 1 0 111.414-1.42l2.543 2.544 6.543-6.544a1 1 0 011.415 0z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        </span>
+                        <span>{application}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="mt-10 overflow-hidden rounded-2xl border border-slate-200">
+                  <table class="min-w-full border-collapse text-left">
+                    <tbody>
+                      {product.specs.map(([label, value], specIndex) => (
+                        <tr class={specIndex % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                          <th class="w-[42%] border-b border-slate-200 px-5 py-4 text-sm font-semibold text-slate-900 sm:text-base">
+                            {label}
+                          </th>
+                          <td class="border-b border-slate-200 px-5 py-4 text-sm text-slate-600 sm:text-base">
+                            {value}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <a
+                  href="/contato"
+                  class="mt-8 inline-flex items-center justify-center rounded-lg px-7 py-3.5 text-base font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+                  style={`background-color: ${product.accentColor};`}
+                >
+                  Solicitar Orçamento
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <section class="bg-[#0D1B2A] py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2
+          class="text-4xl font-bold text-white sm:text-5xl"
+          style={`font-family: 'Barlow Condensed', sans-serif;`}
+        >
+          Compare as Granulometrias
+        </h2>
+        <p class="mt-5 text-lg leading-8 text-slate-300">
+          Escolha a areia ideal para cada fase da sua obra
+        </p>
+      </div>
+
+      <div class="mt-12 overflow-x-auto rounded-3xl bg-white/5 p-2">
+        <table class="min-w-[720px] w-full overflow-hidden rounded-2xl bg-white">
+          <thead>
+            <tr class="bg-[#393e92] text-left text-white">
+              <th class="px-5 py-4 text-sm font-semibold uppercase tracking-wide">Característica</th>
+              <th class="px-5 py-4 text-sm font-semibold uppercase tracking-wide">Areia Fina</th>
+              <th class="px-5 py-4 text-sm font-semibold uppercase tracking-wide">Areia Média</th>
+              <th class="px-5 py-4 text-sm font-semibold uppercase tracking-wide">Areia Grossa</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((row, rowIndex) => (
+              <tr class={rowIndex % 2 === 0 ? 'bg-white' : 'bg-[#f0f4f8]'}>
+                {row.map((cell, cellIndex) => (
+                  <td
+                    class={`px-5 py-4 text-base ${
+                      cellIndex === 0 ? 'font-semibold text-slate-900' : 'text-slate-700'
+                    }`}
+                  >
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <CTAFinal />
+</BaseLayout>

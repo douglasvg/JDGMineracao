@@ -48,10 +48,10 @@ export default function UseCaseTabs({ useCases }: Props) {
             <Tabs.Trigger
               key={industry}
               value={industry}
-              className="group px-6 py-3 text-sm font-semibold text-gray-600 border-b-2 border-transparent hover:text-blue-600 hover:border-blue-300 transition-all duration-200 data-[state=active]:text-blue-600 data-[state=active]:border-blue-600 flex items-center gap-2"
+              className="group px-6 py-3 text-sm font-semibold text-gray-600 border-b-2 border-transparent hover:text-[#393e92] hover:border-[#393e92]/30 transition-all duration-200 data-[state=active]:text-[#393e92] data-[state=active]:border-[#393e92] flex items-center gap-2"
             >
               {IconComponent && (
-                <IconComponent className="w-4 h-4 group-data-[state=active]:text-blue-600" />
+                <IconComponent className="w-4 h-4 group-data-[state=active]:text-[#393e92]" />
               )}
               {industry}
             </Tabs.Trigger>
@@ -85,7 +85,7 @@ export default function UseCaseTabs({ useCases }: Props) {
                   <div className="absolute top-6 left-6">
                     <div className="w-16 h-16 rounded-xl bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-lg">
                       {IconComponent && (
-                        <IconComponent className="w-8 h-8 text-blue-600" />
+                        <IconComponent className="w-8 h-8 text-[#393e92]" />
                       )}
                     </div>
                   </div>
@@ -115,11 +115,11 @@ export default function UseCaseTabs({ useCases }: Props) {
                     </div>
 
                     {/* Solution */}
-                    <div className="bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-5">
+                    <div className="bg-[#eeeef7] border-l-4 border-[#393e92] rounded-r-lg p-5">
                       <div className="flex items-start gap-3">
-                        <Lightbulb className="w-6 h-6 text-blue-600 shrink-0 mt-0.5" />
+                        <Lightbulb className="w-6 h-6 text-[#393e92] shrink-0 mt-0.5" />
                         <div>
-                          <h3 className="text-lg font-bold text-blue-900 mb-2">
+                          <h3 className="text-lg font-bold text-[#393e92] mb-2">
                             Solution
                           </h3>
                           <p className="text-gray-700 leading-relaxed">

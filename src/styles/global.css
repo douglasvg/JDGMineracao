@@ -6,7 +6,7 @@ html {
 }
 
 .nav-active {
-  @apply after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:bg-blue-300 hover:after:bg-transparent after:rounded-full;
+  @apply text-[#393e92] after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:bg-[#393e92] hover:after:bg-transparent after:rounded-full;
 }
 
 /* Animations */
@@ -39,8 +39,5 @@ html {
 }
 
 .gradient-text {
-  background: linear-gradient(to right, #2563eb, #0d9488);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #393e92;
 }
