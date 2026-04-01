@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { Warehouse, Truck, Package } from 'lucide-react';
 import areiaFinaImg from '../../../images/areia-fina.png';
 import areiaMediaImg from '../../../images/areia-media.png';
-import areiaGrossaImg from '../../../images/areia-grossa.png';
+import areiaGrossaImg from '../../../images/areia-grossa-produtos.png';
 
 const features = [
   {
