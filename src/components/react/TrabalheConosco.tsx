@@ -493,7 +493,7 @@ export default function TrabalheConosco() {
 
                   <div>
                     <label htmlFor="email" className="mb-2 block text-sm font-medium text-slate-700">
-                      Email <span className="text-red-500">*</span>
+                      E-mail <span className="text-red-500">*</span>
                     </label>
                     <input
                       id="email"
@@ -558,7 +558,7 @@ export default function TrabalheConosco() {
 
                   <div>
                     <label htmlFor="mensagem" className="mb-2 block text-sm font-medium text-slate-700">
-                      Mensagem / Por que quer a vaga
+                      Mensagem / Por que você quer a vaga?
                     </label>
                     <textarea
                       id="mensagem"
