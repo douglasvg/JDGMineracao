@@ -44,7 +44,9 @@ export default function RFQForm() {
         body: JSON.stringify({
           access_key: accessKey.trim(),
           subject: 'Nova solicitação de orçamento — JDG Mineração',
+          // from_name só afeta o cabeçalho do remetente; não lista nos detalhes do e-mail
           from_name: fullName || 'Site',
+          nome_completo: fullName,
           email,
           replyto: email,
           phone,
