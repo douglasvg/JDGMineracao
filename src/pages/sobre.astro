@@ -11,26 +11,69 @@ import {
   PackageCheck,
   MapPin,
   Clock,
+  Linkedin,
+  Instagram,
 } from 'lucide-react';
 import fotoJovelci from '../../images/Jovelci Domingos Gomes.jpg';
+import fotoDouglas from '../../images/Douglas Vitto Gomes.JPG';
 import imgNossaHistoria from '../../images/JDG Mineração Bandeira.jpeg';
 
 const pageTitle = 'Sobre Nós | JDG Mineração';
 const pageDescription =
   'Conheça a JDG Mineração: propósito, valores e compromisso com o fornecimento de areia para a construção civil em União da Vitória, PR.';
 
+function iniciaisNome(nome: string) {
+  const partes = nome.trim().split(/\s+/);
+  if (partes.length >= 2) {
+    return (partes[0][0] + partes[partes.length - 1][0]).toUpperCase();
+  }
+  return nome.slice(0, 2).toUpperCase();
+}
+
 // Adicione os membros da equipe aqui
 const equipe: Array<{
   nome: string;
   cargo: string;
   frase?: string;
-  foto: string;
+  descricao?: string;
+  foto?: string;
+  linkedin?: string;
+  instagram?: string;
 }> = [
   {
     nome: 'Jovelci Domingos Gomes',
     cargo: 'Fundador / Diretor-Presidente',
     frase: 'O futuro do homem está em seu otimismo, trabalhe!',
+    descricao:
+      'Empreendedor serial, Jovelci construiu do zero uma das maiores indústrias de plástico e tecido não tecido do Brasil.',
     foto: fotoJovelci.src,
+    instagram: 'https://www.instagram.com/drjovelcigomes',
+  },
+  {
+    nome: 'Douglas Vitto Gomes',
+    cargo: 'Diretor de Planejamento Estratégico',
+    frase:
+      'Crescimento parte de planejamento mensurado, de longo prazo, e bem estruturado.',
+    descricao:
+      'Com MBA pela USC Marshall, Douglas atua em estratégia corporativa e crescimento empresarial.',
+    foto: fotoDouglas.src,
+    linkedin: 'https://www.linkedin.com/in/dvittogomes/',
+  },
+  {
+    nome: 'Christian Martins',
+    cargo: 'Diretor de Relações Institucionais',
+  },
+  {
+    nome: 'André Luiz Luz',
+    cargo: 'Diretor de Operações',
+  },
+  {
+    nome: 'Joile Soares',
+    cargo: 'Diretora Financeira',
+  },
+  {
+    nome: 'Luciano Dalponte',
+    cargo: 'Diretor Jurídico',
   },
 ];
 ---
@@ -195,17 +238,76 @@ const equipe: Array<{
         <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {equipe.map((membro) => (
             <article class="rounded-xl border border-slate-200/80 bg-[#f8f9fa] p-8 text-center shadow-sm">
-              <img
-                src={membro.foto}
-                alt={membro.nome}
-                class="mx-auto h-32 w-32 rounded-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
+              <div class="flex flex-col items-center">
+                {membro.frase && (
+                  <div class="relative mb-3 max-w-[min(100%,17rem)]">
+                    <blockquote
+                      class="relative z-10 m-0 rounded-2xl border border-[#393e92]/20 bg-white px-3 py-2.5 text-sm italic leading-snug text-slate-700 shadow-sm"
+                    >
+                      {membro.frase}
+                    </blockquote>
+                    <div
+                      class="absolute -bottom-1.5 left-1/2 z-0 h-3 w-3 -translate-x-1/2 rotate-45 border-b border-r border-[#393e92]/20 bg-white"
+                      aria-hidden="true"
+                    />
+                  </div>
+                )}
+                {membro.foto ? (
+                  <img
+                    src={membro.foto}
+                    alt={membro.nome}
+                    class="mx-auto h-32 w-32 rounded-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <div
+                    class="mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-[#393e92]/12 text-2xl font-bold tracking-tight text-[#393e92]"
+                    aria-hidden="true"
+                  >
+                    {iniciaisNome(membro.nome)}
+                  </div>
+                )}
+              </div>
               <h3 class="mt-5 text-lg font-bold text-[#0D1B2A]">{membro.nome}</h3>
               <p class="mt-1 text-sm text-slate-500">{membro.cargo}</p>
-              <div class="mx-auto my-5 h-px w-12 bg-[#C9922A]/40" />
-              {membro.frase && <p class="text-sm text-slate-600 leading-relaxed">{membro.frase}</p>}
+              {membro.descricao && (
+                <>
+                  <div class="mx-auto my-5 h-px w-12 bg-[#C9922A]/40" />
+                  <p class="text-sm text-slate-600 leading-relaxed">{membro.descricao}</p>
+                </>
+              )}
+              {(membro.linkedin || membro.instagram) && (
+                <div
+                  class:list={[
+                    'flex flex-col items-center gap-2',
+                    membro.descricao ? 'mt-4' : 'mt-5',
+                  ]}
+                >
+                  {membro.linkedin && (
+                    <a
+                      href={membro.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-[#393e92] transition hover:text-[#2e3275]"
+                    >
+                      <Linkedin className="h-5 w-5 shrink-0" aria-hidden="true" />
+                      LinkedIn
+                    </a>
+                  )}
+                  {membro.instagram && (
+                    <a
+                      href={membro.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-[#393e92] transition hover:text-[#2e3275]"
+                    >
+                      <Instagram className="h-5 w-5 shrink-0" aria-hidden="true" />
+                      Instagram
+                    </a>
+                  )}
+                </div>
+              )}
             </article>
           ))}
         </div>
