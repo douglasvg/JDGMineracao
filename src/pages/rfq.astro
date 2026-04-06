@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import { whatsappUrl, WHATSAPP_PREFILL } from '@config/site';
 import Section from '@components/ui/Section.astro';
 import Card from '@components/ui/Card.astro';
 import RFQForm from '@components/react/RFQForm';
@@ -97,7 +98,7 @@ import areiaTexturaImg from '../../images/areia-textura.png';
               </div>
               <div>
                 <div class="font-semibold text-gray-900">Telefone / WhatsApp</div>
-                <div class="text-gray-600 font-medium">(49) 000000000</div>
+                <div class="text-gray-600 font-medium">(42) 98815-8515</div>
                 <div class="text-gray-500 text-xs">Seg–Sex, 07h às 17h</div>
               </div>
             </div>
@@ -138,7 +139,7 @@ import areiaTexturaImg from '../../images/areia-textura.png';
           </div>
 
           <a
-            href="https://wa.me/5549000000000"
+            href={whatsappUrl(WHATSAPP_PREFILL)}
             target="_blank"
             rel="noreferrer"
             class="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-[#25D366] px-4 py-3 font-semibold text-white transition-colors hover:bg-[#1faa52]"

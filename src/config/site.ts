@@ -21,3 +21,18 @@ export const SOCIAL_LINKS = {
   facebook: 'https://facebook.com/yourcompany',
 } as const;
 
+/** E.164 sem + (ex: 5549999999999). */
+export const WHATSAPP_E164 = '5542988158515';
+
+/** Texto pré-preenchido ao abrir o WhatsApp (widget e CTAs). */
+export const WHATSAPP_PREFILL =
+  'Olá! Gostaria de mais informações sobre areia da JDG Mineração.';
+
+export function whatsappUrl(prefillText?: string): string {
+  const base = `https://wa.me/${WHATSAPP_E164}`;
+  if (prefillText) {
+    return `${base}?text=${encodeURIComponent(prefillText)}`;
+  }
+  return base;
+}
+
