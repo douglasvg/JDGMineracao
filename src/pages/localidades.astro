@@ -339,7 +339,13 @@ const tipoConfig = {
         const status = document.querySelector('[data-nearest-status]');
         if (!status) return;
         const colorClass =
-          tone === 'error' ? 'text-red-600' : tone === 'success' ? 'text-emerald-700' : 'text-slate-600';
+          tone === 'error'
+            ? 'text-red-600'
+            : tone === 'success'
+              ? 'text-emerald-700'
+              : tone === 'warning'
+                ? 'text-amber-700'
+                : 'text-slate-600';
         status.className = `text-sm ${colorClass}`;
         status.textContent = message;
       }
@@ -353,7 +359,9 @@ const tipoConfig = {
           .forEach((card) => list.appendChild(card));
       }
 
-      function updateDistanceBadges(distanceByIndex) {
+      function updateDistanceBadges(distanceByIndex, labelMode) {
+        const suffix =
+          labelMode === 'straight' ? 'em linha reta' : 'por estrada';
         const cards = document.querySelectorAll('[data-local-tipo]');
         cards.forEach((card) => {
           const distanceNode = card.querySelector('[data-local-distance]');
@@ -366,48 +374,38 @@ const tipoConfig = {
             return;
           }
           const km = distanceInMeters / 1000;
-          const text = km < 1 ? `${Math.round(distanceInMeters)} m por estrada` : `${km.toFixed(1)} km por estrada`;
+          const text =
+            km < 1
+              ? `${Math.round(distanceInMeters)} m ${suffix}`
+              : `${km.toFixed(1)} km ${suffix}`;
           distanceNode.textContent = text;
           distanceNode.classList.remove('hidden');
         });
       }
 
-      async function sortByRoadDistance(userLat, userLng) {
-        const list = document.querySelector('[data-localidades-list]');
-        if (!list) throw new Error('Lista nao encontrada.');
+      function haversineMeters(lat1, lng1, lat2, lng2) {
+        const R = 6371000;
+        const toRad = (d) => (d * Math.PI) / 180;
+        const dLat = toRad(lat2 - lat1);
+        const dLng = toRad(lng2 - lng1);
+        const a =
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+      }
 
-        const cards = Array.from(list.querySelectorAll('[data-local-tipo]'));
-        if (!cards.length) return;
-
-        const response = await fetch('/api/localidades-route-distances', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ userLat, userLng }),
-        });
-
-        const payload = await response.json().catch(() => ({}));
-        if (!response.ok) {
-          throw new Error(
-            typeof payload.error === 'string' ? payload.error : 'Falha ao consultar a API de rotas.',
-          );
-        }
-
-        if (!Array.isArray(payload.distances)) {
-          throw new Error('Resposta invalida da API de rotas.');
-        }
-
+      function applyGoogleOrder(list, cards, rows) {
         const cardsByIndex = new Map(
           cards.map((card) => [Number(card.getAttribute('data-local-index')), card]),
         );
-
-        payload.distances.forEach((row) => {
+        rows.forEach((row) => {
           if (!row || typeof row.index !== 'number') return;
           const card = cardsByIndex.get(row.index);
           if (card) list.appendChild(card);
         });
-
         const distanceByIndex = new Map();
-        payload.distances.forEach((row) => {
+        rows.forEach((row) => {
           if (!row || typeof row.index !== 'number') return;
           const m = row.meters;
           distanceByIndex.set(
@@ -415,7 +413,110 @@ const tipoConfig = {
             typeof m === 'number' && Number.isFinite(m) ? m : null,
           );
         });
-        updateDistanceBadges(distanceByIndex);
+        updateDistanceBadges(distanceByIndex, 'road');
+      }
+
+      async function tryGoogleRoutes(userLat, userLng, list, cards) {
+        const response = await fetch('/api/localidades-route-distances', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userLat, userLng }),
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok || !Array.isArray(payload.distances)) return false;
+        let any = false;
+        for (const row of payload.distances) {
+          if (row && typeof row.meters === 'number' && Number.isFinite(row.meters)) {
+            any = true;
+            break;
+          }
+        }
+        if (!any) return false;
+        applyGoogleOrder(list, cards, payload.distances);
+        return true;
+      }
+
+      async function tryOsrm(userLat, userLng, list, cards) {
+        const destinations = cards.map((card) => {
+          const lat = Number(card.getAttribute('data-local-lat'));
+          const lng = Number(card.getAttribute('data-local-lng'));
+          if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+            throw new Error('Coordenadas invalidas.');
+          }
+          return { card, lat, lng };
+        });
+        const coords = [`${userLng},${userLat}`, ...destinations.map((d) => `${d.lng},${d.lat}`)].join(
+          ';',
+        );
+        const url = `https://router.project-osrm.org/table/v1/driving/${coords}?sources=0&annotations=distance`;
+        const response = await fetch(url);
+        if (!response.ok) return false;
+        const payload = await response.json();
+        if (
+          payload.code !== 'Ok' ||
+          !Array.isArray(payload.distances) ||
+          !Array.isArray(payload.distances[0])
+        ) {
+          return false;
+        }
+        const sourceDistances = payload.distances[0];
+        const ranked = destinations
+          .map((dest, idx) => {
+            const distance = sourceDistances[idx + 1];
+            return {
+              ...dest,
+              distance:
+                typeof distance === 'number' && Number.isFinite(distance)
+                  ? distance
+                  : Number.POSITIVE_INFINITY,
+            };
+          })
+          .sort((a, b) => a.distance - b.distance);
+        ranked.forEach(({ card }) => list.appendChild(card));
+        const distanceByIndex = new Map(
+          ranked.map((item) => [Number(item.card.getAttribute('data-local-index')), item.distance]),
+        );
+        updateDistanceBadges(distanceByIndex, 'road');
+        return true;
+      }
+
+      function sortByHaversine(userLat, userLng, list, cards) {
+        const items = cards.map((card) => {
+          const lat = Number(card.getAttribute('data-local-lat'));
+          const lng = Number(card.getAttribute('data-local-lng'));
+          const idx = Number(card.getAttribute('data-local-index'));
+          const d = haversineMeters(userLat, userLng, lat, lng);
+          return { card, idx, d };
+        });
+        items.sort((a, b) => a.d - b.d);
+        items.forEach(({ card }) => list.appendChild(card));
+        const distanceByIndex = new Map(items.map((i) => [i.idx, i.d]));
+        updateDistanceBadges(distanceByIndex, 'straight');
+      }
+
+      /**
+       * @returns {'google'|'osrm'|'straight'}
+       */
+      async function sortByRoadDistanceWithFallback(userLat, userLng) {
+        const list = document.querySelector('[data-localidades-list]');
+        if (!list) throw new Error('Lista nao encontrada.');
+        const cards = Array.from(list.querySelectorAll('[data-local-tipo]'));
+        if (!cards.length) return 'straight';
+
+        try {
+          if (await tryGoogleRoutes(userLat, userLng, list, cards)) return 'google';
+        } catch (_) {
+          /* tentar proximo */
+        }
+
+        try {
+          if (await tryOsrm(userLat, userLng, list, cards)) return 'osrm';
+        } catch (_) {
+          /* tentar proximo */
+        }
+
+        sortByHaversine(userLat, userLng, list, cards);
+        return 'straight';
       }
 
       function applyFilter(filter) {
@@ -500,13 +601,28 @@ const tipoConfig = {
               async (position) => {
                 try {
                   const { latitude, longitude } = position.coords;
-                  await sortByRoadDistance(latitude, longitude);
-                  setNearestStatus('Unidades ordenadas por distancia real de rota.', 'success');
+                  const mode = await sortByRoadDistanceWithFallback(latitude, longitude);
+                  if (mode === 'google') {
+                    setNearestStatus(
+                      'Unidades ordenadas por distância por estrada (Google).',
+                      'success',
+                    );
+                  } else if (mode === 'osrm') {
+                    setNearestStatus(
+                      'Unidades ordenadas por rota (serviço alternativo). O Google não respondeu no momento.',
+                      'warning',
+                    );
+                  } else {
+                    setNearestStatus(
+                      'Ordenação por distância em linha reta. Não foi possível calcular a rota por estrada agora.',
+                      'info',
+                    );
+                  }
                 } catch (_) {
                   resetToDefaultOrder();
                   updateDistanceBadges(new Map());
                   setNearestStatus(
-                    'Nao foi possivel calcular a rota agora. Exibindo a ordem padrao das unidades.',
+                    'Não foi possível ordenar as unidades agora. Tente de novo ou use o campo de busca acima.',
                     'error',
                   );
                 } finally {
@@ -520,8 +636,8 @@ const tipoConfig = {
                 const denied = error && error.code === 1;
                 setNearestStatus(
                   denied
-                    ? 'Permissao de localizacao negada. Exibindo a ordem padrao das unidades.'
-                    : 'Nao foi possivel obter sua localizacao. Exibindo a ordem padrao das unidades.',
+                    ? 'Permissão de localização negada. Ative no ícone de cadeado do navegador (permissões do site) ou use o buscador acima.'
+                    : 'Não foi possível obter sua localização. Verifique se o GPS está ativo ou use o buscador acima.',
                   'error',
                 );
                 nearestButton.disabled = false;
