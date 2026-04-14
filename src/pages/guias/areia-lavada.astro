@@ -1,0 +1,411 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import CTAFinal from '@components/home/CTAFinal.astro';
+import { SITE } from '@config/site';
+import areiaFinaMediaGrossa from '../../../images/areia-fina-media-grossa.jpg';
+
+const pageTitle = 'Areia Lavada para Construção Civil: O Guia Completo | JDG Mineração';
+const pageDescription =
+  'Areia lavada com foco em qualidade e rastreabilidade. Granulometrias fina, média e grossa, NBR 7211 e retirada em União da Vitória, PR. Solicite orçamento com a JDG Mineração.';
+
+const publishedAt = '2026-04-14';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Areia Lavada para Construção Civil: O Guia Completo',
+  description: pageDescription,
+  datePublished: publishedAt,
+  author: {
+    '@type': 'Organization',
+    name: SITE.author,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.author,
+  },
+};
+
+/** FAQ revisado: respostas alinhadas a especificação de projeto + normas; sem “obrigatoriedade universal”. */
+const faqItems = [
+  {
+    q: 'Qual é a diferença entre areia lavada e areia comum?',
+    a: 'Areia “comum” (sem controle) costuma trazer mais argila, pó e finos — o que piora trabalhabilidade e pode exigir mais água no traço. Areia lavada passa por lavagem e classificação para reduzir impurezas e melhorar previsibilidade. O que vale na obra é cumprir o que o projeto e a norma aplicável exigem para aquele traço; na prática, areia lavada e bem especificada é o caminho mais seguro para atingir limites de materiais finos e orgânicos.',
+  },
+  {
+    q: 'Como saber qual granulometria escolher para minha obra?',
+    a: 'Em linhas gerais: areia fina para rebocos e acabamentos; areia média para a maior parte dos concretos e argamassas de alvenaria; areia grossa para fundações, drenagens e traços que pedem maior “corpo”. Sempre confira o memorial de especificação e o projeto estrutural. Se precisar, nossa equipe ajuda a alinhar a granulometria à aplicação.',
+  },
+  {
+    q: 'Como funciona a retirada do material na mineradora?',
+    a: 'A retirada é feita na unidade em União da Vitória, PR (BR 153, s/n, Bairro São Gabriel), com área para manobra de caminhões. O horário de atendimento para retirada costuma ser segunda a sexta, das 7h às 17h — confirme sempre no agendamento, pois pode haver ajustes operacionais. Veja também o mapa e orientações em Localidades.',
+  },
+  {
+    q: 'Vocês fornecem laudo técnico e certificado de qualidade?',
+    a: 'Sim. Cada lote sai com análise granulométrica e informações para rastreabilidade (incluindo indicadores como módulo de finura, umidade e conformidade com os parâmetros combinados). Guarde o documento para amarrar o lote ao controle tecnológico da obra.',
+  },
+  {
+    q: 'Como faço para agendar a retirada?',
+    a: 'Solicite orçamento pelo site ou WhatsApp informando volume (m³), granulometria desejada (fina, média ou grossa) e data prevista para retirada. A equipe confirma disponibilidade e agenda o carregamento. Quem agenda com antecedência costuma ter menos fila e melhor janela de atendimento.',
+  },
+];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+};
+
+const linkExt = 'text-[#393e92] underline underline-offset-2 hover:text-[#2e3275]';
+const linkIn = 'text-[#393e92] font-semibold underline underline-offset-2 hover:text-[#2e3275]';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
+  <section class="bg-[#0D1B2A] px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+    <div class="container mx-auto max-w-3xl">
+      <nav class="text-sm text-white/65" aria-label="Breadcrumb">
+        <ol class="flex flex-wrap items-center gap-2">
+          <li><a href="/guias" class="hover:text-white transition-colors">Guias técnicos</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-white/90">Areia lavada</li>
+        </ol>
+      </nav>
+      <p class="mt-8 text-xs font-semibold uppercase tracking-widest text-[#C9922A]">Guia técnico</p>
+      <h1
+        class="mt-3 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-[2.65rem]"
+        style="font-family: 'Barlow Condensed', sans-serif;"
+      >
+        Areia Lavada para Construção Civil: O Guia Completo
+      </h1>
+      <p class="mt-6 text-lg leading-relaxed text-white/80">
+        Referência para construtoras e canteiro: o que é areia lavada, como a NBR 7211 entra na
+        decisão técnica, granulometrias e como solicitar material com rastreabilidade na JDG.
+      </p>
+      <p class="mt-4 text-sm text-white/55">
+        Atualizado em{' '}
+        {new Date(publishedAt).toLocaleDateString('pt-BR', {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric',
+        })}
+      </p>
+    </div>
+  </section>
+
+  <article class="bg-white px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+    <div class="mx-auto max-w-3xl space-y-6 text-base leading-relaxed text-slate-600">
+      <p class="text-xl leading-relaxed text-slate-700">
+        O Brasil consome volumes muito grandes de areia por ano — e grande parte dessa demanda vem
+        de obras que precisam de agregado miúdo com qualidade controlada. A areia lavada é peça
+        central em concretos, argamassas e bases, mas nem todo material atende aos requisitos da
+        <a
+          href="https://www.mapadaobra.com.br/capacitacao/norma-comentada-nbr-7211/"
+          class={linkExt}
+          target="_blank"
+          rel="noopener noreferrer">ABNT NBR 7211</a> para agregados finos. Na JDG Mineração, a areia passa por lavagem e classificação para
+        reduzir impurezas, argila e materiais que comprometem a previsibilidade do traço.
+      </p>
+
+      <aside class="rounded-xl border border-slate-200 bg-slate-50 p-6">
+        <h2 class="text-lg font-bold text-[#0D1B2A]" style="font-family: 'Barlow Condensed', sans-serif;">
+          Pontos-chave
+        </h2>
+        <ul class="mt-4 list-disc space-y-2 pl-5">
+          <li>
+            A NBR 7211 define requisitos para agregados finos; em resumos didáticos, costuma aparecer
+            o limite de <strong>até 3% de argila</strong> (e critérios de materiais carbonosos) —
+            valide sempre o texto oficial da norma no seu projeto.
+          </li>
+          <li>
+            <strong>Três granulometrias comerciais na JDG</strong> (ver
+            <a href="/produtos" class={linkIn}>Produtos</a>): fina, média e grossa — com faixas
+            informadas na página de produtos.
+          </li>
+          <li>
+            Retirada na unidade em <strong>União da Vitória, PR</strong> — em geral seg a sex, 7h–17h
+            para agendamento de retirada (confirme ao fechar pedido).
+          </li>
+          <li>
+            <strong>Laudo / análise granulométrica</strong> por lote, para rastreabilidade e controle
+            na obra.
+          </li>
+        </ul>
+      </aside>
+
+      <figure class="overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm">
+        <Image
+          src={areiaFinaMediaGrossa}
+          alt="Areia fina, média e grossa para uso em canteiro e obra civil"
+          class="h-auto w-full object-cover"
+          sizes="(max-width: 768px) 100vw, 768px"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="border-t border-slate-200 px-4 py-3 text-center text-sm text-slate-500">
+          Granulometrias fina, média e grossa: a escolha certa depende da etapa da obra e do traço.
+        </figcaption>
+      </figure>
+
+      <h2 class="mt-10 text-2xl font-bold text-[#0D1B2A] sm:mt-12" style="font-family: 'Barlow Condensed', sans-serif;">
+        O que é areia lavada e por que ela importa para a obra?
+      </h2>
+      <p>
+        <strong>Areia lavada</strong> é areia submetida a lavagem e classificação para remover
+        impurezas, argila e pó que elevam a demanda de água e prejudicam a aderência. A
+        <a
+          href="https://www.mapadaobra.com.br/capacitacao/norma-comentada-nbr-7211/"
+          class={linkExt}
+          target="_blank"
+          rel="noopener noreferrer">NBR 7211</a>
+        estabelece requisitos para agregados miúdos naturais usados em concreto — incluindo limites
+        de argila e de materiais carbonosos. Na prática, isso existe para reduzir fissuração,
+        variabilidade de traço e perda de resistência.
+      </p>
+      <p>
+        O setor da construção civil tem apresentado crescimento em períodos recentes (dados de
+        entidades como a
+        <a href="https://cbic.org.br/construcao-civil-cresce-43-em-2024-e-impulsiona-economia-nacional/" class={linkExt} target="_blank" rel="noopener noreferrer">CBIC</a>),
+        o que aumenta a pressão por fornecimento estável. Material com excesso de finos e argila
+        tende a gerar retrabalho, perda de prazo e risco de não conformidade com especificação.
+      </p>
+      <p>
+        Na JDG Mineração, o fluxo inclui peneiramento e lavagem com água de recirculação, com foco em
+        granulometria consistente e redução de contaminantes. Cada lote sai com documentação para
+        amarrar o fornecimento ao controle da obra.
+      </p>
+
+      <blockquote class="rounded-lg border-l-4 border-[#393e92] bg-[#393e92]/5 py-4 pl-5 pr-4 text-slate-700">
+        <p class="font-semibold text-slate-900">
+          Areia com qualidade controlada (conforme parâmetros da NBR 7211 aplicáveis ao seu traço)
+          reduz surpresas em campo: menos variação de água, melhor previsibilidade de resistência e
+          acabamento.
+        </p>
+        <p class="mt-2 text-sm">
+          Leitura complementar:
+          <a
+            href="https://www.mapadaobra.com.br/capacitacao/norma-comentada-nbr-7211/"
+            class={linkExt}
+            target="_blank"
+            rel="noopener noreferrer">ABNT NBR 7211 (comentário Mapa da Obra)</a>.
+        </p>
+      </blockquote>
+
+      <p>
+        <a href="/localidades" class={linkIn}>Veja como chegar à unidade</a> e combine logística de retirada
+        com antecedência.
+      </p>
+
+      <h2 class="mt-12 text-2xl font-bold text-[#0D1B2A]" style="font-family: 'Barlow Condensed', sans-serif;">
+        Areia fina, média e grossa: qual usar em cada etapa?
+      </h2>
+      <p>
+        <strong>A granulometria define o comportamento do traço.</strong> Manuais e normas usam
+        classificações por faixas de peneiras; referências acadêmicas (ex. materiais do
+        <a
+          href="https://mineralis.cetem.gov.br/bitstream/cetem/2049/1/Cap%206%20Usos%20e%20Especifica%C3%B5es.pdf"
+          class={linkExt}
+          target="_blank"
+          rel="noopener noreferrer">CETEM</a>) ajudam a entender usos típicos. O que não pode faltar é coerência entre <em>especificação
+        do projeto</em> e o que você compra.
+      </p>
+
+      <div class="overflow-hidden rounded-xl border border-slate-200">
+        <table class="min-w-full text-left text-sm">
+          <thead class="bg-[#393e92] text-white">
+            <tr>
+              <th class="px-4 py-3 font-semibold">Produto JDG</th>
+              <th class="px-4 py-3 font-semibold">Granulometria (referência comercial)</th>
+              <th class="px-4 py-3 font-semibold">Uso típico</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 bg-white">
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-900">Areia fina</td>
+              <td class="px-4 py-3">0,06 mm a 0,2 mm</td>
+              <td class="px-4 py-3">Reboco, argamassas de acabamento, rejunte</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="px-4 py-3 font-medium text-slate-900">Areia média</td>
+              <td class="px-4 py-3">0,2 mm a 0,6 mm</td>
+              <td class="px-4 py-3">Concreto comum, assentamento, contrapiso</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-900">Areia grossa</td>
+              <td class="px-4 py-3">0,6 mm a 2,0 mm</td>
+              <td class="px-4 py-3">Fundações, concreto estrutural, drenagem</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-slate-500">
+        Faixas acima são as divulgadas na página de
+        <a href="/produtos" class={linkIn}>Produtos</a>. Normas e estudos podem usar outras tabelas
+        de peneiras; o memorial da sua obra manda.
+      </p>
+
+      <p>
+        <strong>Areia fina:</strong> melhor para superfícies, assentamentos que pedem acabamento e
+        misturas mais “fechadas”. <strong>Areia média:</strong> a mais versátil no canteiro — muitas
+        concreteiras e obras a usam como base para traços estruturais e pisos. <strong
+          >Areia grossa:</strong
+        >
+        aparece em fundações, drenagens e situações que pedem menos finos e mais “esqueleto” na
+        mistura.
+      </p>
+
+      <blockquote class="rounded-lg border-l-4 border-[#393e92] bg-[#393e92]/5 py-4 pl-5 pr-4">
+        <p class="font-semibold text-slate-900">
+          Granulometria errada gera porosidade inadequada, consumo anormal de cimento ou trabalhabilidade
+          fora do especificado — por isso a escolha técnica vem antes do preço.
+        </p>
+      </blockquote>
+
+      <p>
+        <a href="/produtos" class={linkIn}>Confira todas as granulometrias e especificações na página de produtos</a>.
+      </p>
+
+      <h2 class="mt-12 text-2xl font-bold text-[#0D1B2A]" style="font-family: 'Barlow Condensed', sans-serif;">
+        Como a JDG Mineração busca qualidade na areia lavada?
+      </h2>
+      <p>
+        O Brasil processa volumes muito grandes de cimento por ano; quando o cimento sobe, sobe junto
+        a exigência por agregados previsíveis (dados de associações do setor, ex.
+        <a href="https://abcp.org.br/vendas-de-cimento-fecham-2024-em-alta/" class={linkExt} target="_blank" rel="noopener noreferrer">SNIC/ABCP</a>).
+        Construtoras evitam areia “sem histórico” porque impurezas afetam diretamente a cura e a
+        resistência.
+      </p>
+      <p>
+        Na JDG, o processo envolve extração organizada, peneiramento por faixa e lavagem com água de
+        recirculação para reduzir argila, pó e materiais indesejados, com foco em atender os
+        parâmetros combinados para o lote. A leitura de norma e o controle de qualidade na obra
+        continuam sendo de responsabilidade do contratante e do fiscal técnico — o fornecedor entrega
+        rastreabilidade e conformidade do que foi acordado.
+      </p>
+      <p>
+        Cada lote pode ser acompanhado de <strong>análise granulométrica</strong> (módulo de finura,
+        umidade, indicadores acordados), com documento para arquivo do canteiro. A área de
+        carregamento em União da Vitória é organizada para retirada com segurança e fluxo.
+      </p>
+
+      <blockquote class="rounded-lg border-l-4 border-[#393e92] bg-[#393e92]/5 py-4 pl-5 pr-4">
+        <p class="font-semibold text-slate-900">
+          Laudo por lote não substitui o controle tecnológico do concreto/argamassa na obra — mas
+          permite provar qual material entrou na betoneira naquela data.
+        </p>
+      </blockquote>
+
+      <p>
+        <a href="/contato" class={linkIn}>Fale com a equipe</a> para alinhar volume, granulometria e
+        documentação.
+      </p>
+
+      <h2 class="mt-12 text-2xl font-bold text-[#0D1B2A]" style="font-family: 'Barlow Condensed', sans-serif;">
+        Como solicitar areia lavada na JDG Mineração?
+      </h2>
+      <p>
+        O fluxo é direto: você informa volume (m³), granulometria e janela de retirada; a equipe
+        confirma disponibilidade e agenda o carregamento. Com o setor aquecido em ciclos de alta
+        demanda (ver
+        <a href="https://cbic.org.br/construcao-civil-cresce-43-em-2024-e-impulsiona-economia-nacional/" class={linkExt} target="_blank" rel="noopener noreferrer">CBIC</a>),
+        quem planeja com antecedência costuma sofrer menos com fila e janela de carga.
+      </p>
+      <p>
+        Informe sempre: <strong>volume total</strong>, <strong>tipo de areia</strong> (fina, média ou
+        grossa) e <strong>data prevista</strong> para retirada. Retirada na unidade, com
+        agendamento — horários confirmados no pedido.
+      </p>
+
+      <blockquote class="rounded-lg border-l-4 border-[#393e92] bg-[#393e92]/5 py-4 pl-5 pr-4">
+        <p class="text-slate-800">
+          Dica de canteiro: agendar com antecedência reduz espera e ajuda a bater cronograma de
+          fundações e lajes.
+        </p>
+      </blockquote>
+
+      <div class="rounded-2xl border border-[#393e92]/25 bg-[#393e92]/10 p-6 sm:p-8">
+        <p class="font-semibold text-[#0D1B2A]">Pronto para solicitar orçamento?</p>
+        <p class="mt-2 text-slate-700">
+          Envie sua necessidade pelo formulário — a equipe retorna o mais rápido possível em horário
+          comercial.
+        </p>
+        <a
+          href="/contato"
+          class="mt-6 inline-flex items-center justify-center rounded-lg bg-[#393e92] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#2e3275]"
+        >
+          Solicitar orçamento
+        </a>
+      </div>
+
+      <h2 class="mt-12 text-2xl font-bold text-[#0D1B2A]" style="font-family: 'Barlow Condensed', sans-serif;">
+        Perguntas frequentes sobre areia lavada
+      </h2>
+      <dl class="space-y-8">
+        {
+          faqItems.map((item) => (
+            <div>
+              <dt class="text-lg font-semibold text-slate-900">{item.q}</dt>
+              <dd class="mt-2 leading-relaxed">{item.a}</dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <h2 class="mt-12 text-2xl font-bold text-[#0D1B2A]" style="font-family: 'Barlow Condensed', sans-serif;">
+        Areia lavada com rastreabilidade para sua obra
+      </h2>
+      <p>
+        Projeções globais sobre demanda por agregados apontam tendência de alta de longo prazo (ver
+        discussões no setor, ex.
+        <a href="https://www.mtexpo.com.br/blog/demanda-global-por-areia-e-agregados-tende-a-subir-45-ate-2060/" class={linkExt} target="_blank" rel="noopener noreferrer">M&amp;T Expo</a>).
+        No Brasil, obras e infraestrutura continuam puxando consumo — e a seleção de fornecedor vira
+        risco de cronograma e qualidade.
+      </p>
+      <p>
+        Na JDG Mineração, você encontra areia lavada com processo de limpeza e classificação,
+        documentação por lote e as três granulometrias para cobrir desde acabamento até estruturas.
+        Retirada na unidade de União da Vitória, PR.
+      </p>
+      <p>
+        <strong>Solicite seu orçamento</strong> —
+        <a href="/contato" class={linkIn}>fale com a equipe</a>.
+      </p>
+
+      <div class="rounded-xl border border-slate-200 bg-slate-50 p-6">
+        <p class="font-semibold text-slate-900">Próximos passos</p>
+        <ul class="mt-3 list-disc space-y-2 pl-5">
+          <li><a href="/localidades" class={linkIn}>Como chegar à mineradora</a></li>
+          <li><a href="/produtos" class={linkIn}>Granulometrias e especificações</a></li>
+          <li><a href="/contato" class={linkIn}>Orçamento personalizado</a></li>
+        </ul>
+      </div>
+
+      <div class="mt-12 rounded-2xl border border-[#393e92]/20 bg-[#393e92]/5 p-6 sm:p-8">
+        <h3 class="text-xl font-bold text-[#0D1B2A]" style="font-family: 'Barlow Condensed', sans-serif;">
+          Precisa de areia com fornecimento estável?
+        </h3>
+        <p class="mt-3 text-slate-600">
+          Alinhe volume, granulometria, documentação e janela de retirada com a equipe comercial.
+        </p>
+        <a
+          href="/contato"
+          class="mt-6 inline-flex items-center justify-center rounded-lg bg-[#393e92] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#2e3275]"
+        >
+          Solicitar orçamento
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <CTAFinal />
+</BaseLayout>

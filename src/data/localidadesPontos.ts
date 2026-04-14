@@ -31,6 +31,16 @@ export const localidadesPontos: LocalidadePonto[] = [
     lng: -51.131875,
   },
   {
+    nome: 'Extração União da Vitória',
+    tipo: 'extracao',
+    cidade: 'União da Vitória – PR',
+    telefone: '(42) 98815-8515',
+    horario: 'Seg–Sex, 09:00 às 17:00',
+    maps: 'https://maps.app.goo.gl/djcbCfAHdtvHLSnY6',
+    lat: -26.086385,
+    lng: -51.0754224,
+  },
+  {
     nome: 'Depósito de São Mateus do Sul',
     tipo: 'deposito',
     endereco: 'Rod. do Xisto, 590',

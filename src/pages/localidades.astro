@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTAFinal from '../components/home/CTAFinal.astro';
 import { localidadesPontos } from '../data/localidadesPontos';
-import { Phone, Clock, Car, ParkingSquare, ArrowUpRight } from 'lucide-react';
+import { Phone, Clock, ArrowUpRight } from 'lucide-react';
 
 const pontos = localidadesPontos;
 
@@ -148,19 +148,27 @@ const tipoConfig = {
                 data-local-lng={ponto.lng}
               >
                 <div class="flex min-w-0 flex-1 flex-col" data-local-card-main>
-                  <span
-                    class:list={[
-                      'inline-flex w-fit rounded-full px-3 py-1.5 text-xs font-semibold sm:text-sm',
-                      cfg.badgeClass,
-                    ]}
-                  >
-                    {cfg.label}
-                  </span>
+                  <div class="flex flex-wrap items-center gap-2 gap-y-1">
+                    <span
+                      class:list={[
+                        'inline-flex shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold sm:text-sm',
+                        cfg.badgeClass,
+                      ]}
+                    >
+                      {cfg.label}
+                    </span>
+                    <p
+                      class:list={[
+                        'hidden min-w-0 max-w-full text-sm font-bold leading-snug sm:text-base',
+                        ponto.tipo === 'deposito' ? 'text-[#393e92]' : 'text-[#C9922A]',
+                      ]}
+                      data-local-distance
+                    />
+                  </div>
                   <h2 class="mt-3 text-lg font-bold leading-snug text-slate-900 sm:text-xl">
                     {ponto.nome}
                   </h2>
                   <p class="mt-1 text-sm text-slate-600">{ponto.cidade}</p>
-                  <p class="mt-1 hidden text-xs font-semibold text-[#393e92]" data-local-distance></p>
 
                   <div class="mt-4 space-y-1 border-t border-slate-200 pt-4 text-sm text-slate-600">
                     {'endereco' in ponto && ponto.endereco ? <p>{ponto.endereco}</p> : null}
@@ -233,60 +241,6 @@ const tipoConfig = {
             );
           })
         }
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-[#f8f9fa] py-20 sm:py-24">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">
-          Como Chegar
-        </h2>
-      </div>
-
-      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="mb-4 inline-flex rounded-xl bg-[#eeeef7] p-3 text-[#393e92]">
-            <Car className="h-6 w-6" />
-          </div>
-          <h3 class="text-xl font-bold text-slate-900">De Carro</h3>
-          <p class="mt-3 text-slate-600">
-            No depósito de União da Vitória, acesso direto pela BR-153 (Bairro São Gabriel). Em São Mateus do
-            Sul, o depósito fica na Rod. do Xisto (Fluviópolis) e a extração em outro ponto — use o mapa de
-            cada unidade.
-          </p>
-        </div>
-
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="mb-4 inline-flex rounded-xl bg-[#fef3e2] p-3 text-[#C9922A]">
-            <ParkingSquare className="h-6 w-6" />
-          </div>
-          <h3 class="text-xl font-bold text-slate-900">Estacionamento</h3>
-          <p class="mt-3 text-slate-600">
-            Área para manobra de caminhões e veículos de grande porte disponível.
-          </p>
-        </div>
-
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="mb-4 inline-flex rounded-xl bg-slate-100 p-3 text-slate-700">
-            <Clock className="h-6 w-6" />
-          </div>
-          <h3 class="text-xl font-bold text-slate-900">Horário de Retirada</h3>
-          <p class="mt-3 whitespace-pre-line text-slate-600">
-            Varia por unidade (segunda a sexta):
-            <br />
-            <br />
-            Escritório e Depósito (União da Vitória): 07:00 às 22:00.
-            <br />
-            Depósito (São Mateus do Sul — Fluviópolis): 07:00 às 22:00.
-            <br />
-            Extração (São Mateus do Sul): 09:00 às 17:00.
-            <br />
-            <br />
-            Chegue com antecedência.
-          </p>
-        </div>
       </div>
     </div>
   </section>
