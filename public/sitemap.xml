@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage — prioridade máxima -->
+  <url>
+    <loc>https://jdgmineracao.com.br/</loc>
+    <lastmod>2026-04-15</lastmod>
+  </url>
+
+  <!-- Produtos — alta prioridade (página de conversão) -->
+  <url>
+    <loc>https://jdgmineracao.com.br/produtos</loc>
+    <lastmod>2026-04-15</lastmod>
+  </url>
+
+  <!-- Areia Lavada — página de produto/SEO -->
+  <url>
+    <loc>https://jdgmineracao.com.br/areia-lavada</loc>
+    <lastmod>2026-04-15</lastmod>
+  </url>
+
+  <!-- Localidades — alta prioridade (Local SEO) -->
+  <url>
+    <loc>https://jdgmineracao.com.br/localidades</loc>
+    <lastmod>2026-04-15</lastmod>
+  </url>
+
+  <!-- Contato — alta prioridade (conversão) -->
+  <url>
+    <loc>https://jdgmineracao.com.br/contato</loc>
+    <lastmod>2026-04-15</lastmod>
+  </url>
+
+  <!-- Sobre Nós -->
+  <url>
+    <loc>https://jdgmineracao.com.br/sobre</loc>
+    <lastmod>2026-04-15</lastmod>
+  </url>
+
+  <!-- Trabalhe Conosco -->
+  <url>
+    <loc>https://jdgmineracao.com.br/trabalhe-conosco</loc>
+    <lastmod>2026-04-15</lastmod>
+  </url>
+
+</urlset>

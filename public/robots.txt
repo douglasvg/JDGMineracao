@@ -1,0 +1,31 @@
+# robots.txt — JDG Mineração
+# https://jdgmineracao.com.br/
+
+# Permitir todos os crawlers de busca
+User-agent: *
+Allow: /
+
+# Crawlers de IA — permitidos explicitamente para citação
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap
+Sitemap: https://jdgmineracao.com.br/sitemap.xml

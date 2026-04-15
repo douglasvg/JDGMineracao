@@ -1,0 +1,146 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": "https://jdgmineracao.com.br/produtos#areia-fina",
+    "name": "Areia Fina para Construção Civil",
+    "description": "Areia fina com granulometria 0,05–0,42mm, ideal para reboco, argamassa, emboço e acabamentos internos e externos. Atende ABNT NBR 7211 com máximo 3% de argila.",
+    "image": "https://jdgmineracao.com.br/images/areia-fina.png",
+    "brand": {
+      "@type": "Brand",
+      "name": "JDG Mineração"
+    },
+    "manufacturer": {
+      "@id": "https://jdgmineracao.com.br/#organization"
+    },
+    "material": "Areia natural lavada",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Granulometria",
+        "value": "0,05 a 0,42 mm"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Norma",
+        "value": "ABNT NBR 7211"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Teor máximo de argila",
+        "value": "3%"
+      }
+    ],
+    "offers": {
+      "@type": "Offer",
+      "url": "https://jdgmineracao.com.br/contato",
+      "priceCurrency": "BRL",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@id": "https://jdgmineracao.com.br/#organization"
+      }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": "https://jdgmineracao.com.br/produtos#areia-media",
+    "name": "Areia Média para Construção Civil",
+    "description": "Areia média com granulometria 0,42–2mm, o agregado mais versátil para construção. Indicada para concreto convencional, assentamento de blocos, pisos e bases estruturais. Atende ABNT NBR 7211.",
+    "image": "https://jdgmineracao.com.br/images/areia-media.png",
+    "brand": {
+      "@type": "Brand",
+      "name": "JDG Mineração"
+    },
+    "manufacturer": {
+      "@id": "https://jdgmineracao.com.br/#organization"
+    },
+    "material": "Areia natural lavada",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Granulometria",
+        "value": "0,42 a 2 mm"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Norma",
+        "value": "ABNT NBR 7211"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Teor máximo de argila",
+        "value": "3%"
+      }
+    ],
+    "offers": {
+      "@type": "Offer",
+      "url": "https://jdgmineracao.com.br/contato",
+      "priceCurrency": "BRL",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@id": "https://jdgmineracao.com.br/#organization"
+      }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": "https://jdgmineracao.com.br/produtos#areia-grossa",
+    "name": "Areia Grossa para Construção Civil",
+    "description": "Areia grossa com granulometria 2–4mm para fundações profundas, drenagem, bases de pavimentação e estruturas de grande porte. Atende ABNT NBR 7211.",
+    "image": "https://jdgmineracao.com.br/images/areia-grossa-produtos.png",
+    "brand": {
+      "@type": "Brand",
+      "name": "JDG Mineração"
+    },
+    "manufacturer": {
+      "@id": "https://jdgmineracao.com.br/#organization"
+    },
+    "material": "Areia natural lavada",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Granulometria",
+        "value": "2 a 4 mm"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Norma",
+        "value": "ABNT NBR 7211"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Teor máximo de argila",
+        "value": "3%"
+      }
+    ],
+    "offers": {
+      "@type": "Offer",
+      "url": "https://jdgmineracao.com.br/contato",
+      "priceCurrency": "BRL",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@id": "https://jdgmineracao.com.br/#organization"
+      }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://jdgmineracao.com.br/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Produtos",
+        "item": "https://jdgmineracao.com.br/produtos"
+      }
+    ]
+  }
+]

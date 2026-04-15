@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CTAFinal from '../components/home/CTAFinal.astro';
 import { localidadesPontos } from '../data/localidadesPontos';
 import { Phone, Clock, ArrowUpRight } from 'lucide-react';
+import schemaData from '../schema/schema-localidades.json';
 
 const pontos = localidadesPontos;
 
@@ -22,6 +23,7 @@ const tipoConfig = {
 <BaseLayout
   title="Localidades | JDG Mineração"
   description="Conheça os pontos de depósito e extração da JDG Mineração para retirada rápida e eficiente."
+  schema={schemaData}
 >
   <section class="bg-[#0D1B2A]">
     <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8 lg:py-28">

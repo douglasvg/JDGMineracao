@@ -2,30 +2,14 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import CTAFinal from '@components/home/CTAFinal.astro';
-import { SITE } from '@config/site';
 import areiaFinaMediaGrossa from '../../../images/areia-fina-media-grossa.jpg';
+import schemaData from '../../schema/schema-areia-lavada.json';
 
 const pageTitle = 'Areia Lavada para Construção Civil: O Guia Completo | JDG Mineração';
 const pageDescription =
   'Areia lavada com foco em qualidade e rastreabilidade. Granulometrias fina, média e grossa, NBR 7211 e retirada em União da Vitória, PR. Solicite orçamento com a JDG Mineração.';
 
 const publishedAt = '2026-04-14';
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'Areia Lavada para Construção Civil: O Guia Completo',
-  description: pageDescription,
-  datePublished: publishedAt,
-  author: {
-    '@type': 'Organization',
-    name: SITE.author,
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: SITE.author,
-  },
-};
 
 /** FAQ revisado: respostas alinhadas a especificação de projeto + normas; sem “obrigatoriedade universal”. */
 const faqItems = [
@@ -51,27 +35,11 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqItems.map((item) => ({
-    '@type': 'Question',
-    name: item.q,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: item.a,
-    },
-  })),
-};
-
 const linkExt = 'text-[#393e92] underline underline-offset-2 hover:text-[#2e3275]';
 const linkIn = 'text-[#393e92] font-semibold underline underline-offset-2 hover:text-[#2e3275]';
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
-
+<BaseLayout title={pageTitle} description={pageDescription} schema={schemaData}>
   <section class="bg-[#0D1B2A] px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
     <div class="container mx-auto max-w-3xl">
       <nav class="text-sm text-white/65" aria-label="Breadcrumb">

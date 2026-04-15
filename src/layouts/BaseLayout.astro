@@ -8,18 +8,20 @@ import { SITE } from '@config/site';
 interface Props {
   title?: string;
   description?: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const currentPathname = Astro.url.pathname;
 
 const { 
   title = SITE.title, 
-  description = SITE.description 
+  description = SITE.description,
+  schema,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -40,6 +42,8 @@ const {
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
+    <link rel="canonical" href={`https://jdgmineracao.com.br${Astro.url.pathname}`} />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
   </head>
   <body class="flex min-h-screen flex-col bg-white font-sans text-neutral-900 antialiased">
     <Header currentPathname={currentPathname} />

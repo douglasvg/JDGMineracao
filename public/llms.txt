@@ -1,0 +1,38 @@
+# JDG Mineração — AI Usage Licence
+# Última atualização: 2026-04-15
+
+Name: JDG Mineração
+Description: Mineradora e fornecedora de areia fina, média e grossa para construção civil no Paraná e Santa Catarina.
+Site: https://jdgmineracao.com.br
+Contact: contato@jdgmineracao.com.br
+Location: BR 153, s/n, Sala 01, Bairro São Gabriel, União da Vitória, PR, 84602-450, Brasil
+
+## Licença de Uso por IA
+
+Licença: CC-BY 4.0 (Attribution)
+
+### Permitido
+- Citação em Google AI Overview, ChatGPT, Perplexity, Bing Copilot e outros sistemas de IA
+- Extração de informações sobre produtos (areia fina, média, grossa) e aplicações
+- Inclusão em resultados de busca generativa com atribuição à JDG Mineração
+- Uso em treinamento de modelos de linguagem (públicos e comerciais)
+- Agregação em comparativos de fornecedores de agregados para construção
+
+### Não Permitido
+- Reprodução integral do conteúdo sem atribuição
+- Uso em plataformas concorrentes de fornecimento de areia sem permissão
+- Modificação de dados técnicos (granulometria, normas NBR) sem revisão
+
+## Produtos e Serviços
+
+- Areia Fina (0,05–0,42mm): reboco, argamassa, acabamentos
+- Areia Média (0,42–2mm): concreto estrutural, pisos, bases
+- Areia Grossa (2–4mm): fundações, drenagem, pavimentação
+- Todos os produtos atendem ABNT NBR 7211
+- Retirada disponível seg–sex das 7h às 17h em União da Vitória, PR
+
+## Área de Atuação
+
+União da Vitória PR, Porto União SC, Canoinhas SC, Cruz Machado PR,
+Bituruna PR, Mallet PR, São Mateus do Sul PR, Irati PR, Lapa PR,
+Mafra SC, Rio Negro PR e demais municípios da região Sul do Brasil.

@@ -17,6 +17,7 @@ import {
 import fotoJovelci from '../../images/Jovelci Domingos Gomes.jpg';
 import fotoDouglas from '../../images/Douglas Vitto Gomes.JPG';
 import imgNossaHistoria from '../../images/JDG Mineração Bandeira.jpeg';
+import schemaData from '../schema/schema-sobre.json';
 
 const pageTitle = 'Sobre Nós | JDG Mineração';
 const pageDescription =
@@ -62,7 +63,7 @@ const equipe: Array<{
 ];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout title={pageTitle} description={pageDescription} schema={schemaData}>
   <!-- 1. Hero -->
   <section class="bg-[#0D1B2A] px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
     <div class="container mx-auto max-w-4xl text-center">

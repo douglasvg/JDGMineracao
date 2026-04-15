@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import schemaData from '../schema/schema-homepage.json';
 import PremiumHero from '../components/home/PremiumHero.astro';
 import SobreNosCurto from '../components/home/SobreNosCurto.astro';
 import NossoProdutoCurto from '../components/home/NossoProdutoCurto.astro';
@@ -9,7 +10,7 @@ import HomeSegmentosAtendidos from '../components/home/HomeSegmentosAtendidos.as
 import CTAFinal from '../components/home/HomeCTAFinal.astro';
 ---
 
-<BaseLayout>
+<BaseLayout schema={schemaData}>
   <PremiumHero />
   <SobreNosCurto />
   <NossoProdutoCurto />

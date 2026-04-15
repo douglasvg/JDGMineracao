@@ -4,12 +4,13 @@ import { whatsappUrl, WHATSAPP_PREFILL } from '@config/site';
 import Section from '@components/ui/Section.astro';
 import Card from '@components/ui/Card.astro';
 import RFQForm from '@components/react/RFQForm';
+import schemaData from '../schema/schema-contato.json';
 import { Image } from 'astro:assets';
 import { FileText, Clock, Shield, CheckCircle2, Phone, Mail, MessageCircle, Award, TrendingUp, Users, MapPin } from 'lucide-react';
 import areiaTexturaImg from '../../images/areia-textura.png';
 ---
 
-<BaseLayout title="Contato | Solicite seu Orçamento">
+<BaseLayout title="Contato | Solicite seu Orçamento" schema={schemaData}>
   <!-- Hero Section with Professional Image -->
   <section class="relative h-[500px] md:h-[600px] flex items-center overflow-hidden">
     <!-- Background Image with Overlay -->

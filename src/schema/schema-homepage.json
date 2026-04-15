@@ -1,0 +1,110 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "Organization"],
+    "@id": "https://jdgmineracao.com.br/#organization",
+    "name": "JDG Mineração",
+    "legalName": "JDG Mineração",
+    "description": "Mineradora e fornecedora de areia fina, média e grossa para construção civil em União da Vitória, PR. Atendemos construtoras, empreiteiras e obras em 20+ municípios do Paraná e Santa Catarina.",
+    "url": "https://jdgmineracao.com.br",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jdgmineracao.com.br/logo.png",
+      "width": 400,
+      "height": 120
+    },
+    "image": "https://jdgmineracao.com.br/og-image.jpg",
+    "telephone": "+55 42 98815-8515",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "BR 153, s/n, Sala 01, Bairro São Gabriel",
+      "addressLocality": "União da Vitória",
+      "addressRegion": "PR",
+      "postalCode": "84602-450",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -26.21822,
+      "longitude": -51.13181
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "07:00",
+        "closes": "22:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday"],
+        "opens": "07:00",
+        "closes": "12:00"
+      }
+    ],
+    "areaServed": [
+      { "@type": "City", "name": "União da Vitória", "addressRegion": "PR" },
+      { "@type": "City", "name": "Porto União", "addressRegion": "SC" },
+      { "@type": "City", "name": "Porto Vitória", "addressRegion": "PR" },
+      { "@type": "City", "name": "Paula Freitas", "addressRegion": "PR" },
+      { "@type": "City", "name": "Paulo Frontin", "addressRegion": "PR" },
+      { "@type": "City", "name": "Irineópolis", "addressRegion": "SC" },
+      { "@type": "City", "name": "Bituruna", "addressRegion": "PR" },
+      { "@type": "City", "name": "Matos Costa", "addressRegion": "SC" },
+      { "@type": "City", "name": "Cruz Machado", "addressRegion": "PR" },
+      { "@type": "City", "name": "Antônio Olinto", "addressRegion": "PR" },
+      { "@type": "City", "name": "General Carneiro", "addressRegion": "PR" },
+      { "@type": "City", "name": "Canoinhas", "addressRegion": "SC" },
+      { "@type": "City", "name": "Mallet", "addressRegion": "PR" },
+      { "@type": "City", "name": "São Mateus do Sul", "addressRegion": "PR" },
+      { "@type": "City", "name": "Três Barras", "addressRegion": "SC" },
+      { "@type": "City", "name": "Calmon", "addressRegion": "SC" },
+      { "@type": "City", "name": "Papanduva", "addressRegion": "SC" },
+      { "@type": "City", "name": "Caçador", "addressRegion": "SC" },
+      { "@type": "City", "name": "Rio Negro", "addressRegion": "PR" },
+      { "@type": "City", "name": "Mafra", "addressRegion": "SC" },
+      { "@type": "City", "name": "Irati", "addressRegion": "PR" },
+      { "@type": "City", "name": "Lapa", "addressRegion": "PR" }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Areia para Construção Civil",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Areia Fina" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Areia Média" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Areia Grossa" } }
+      ]
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "telephone": "+55 42 98815-8515",
+      "availableLanguage": "Portuguese",
+      "areaServed": "BR"
+    },
+    "sameAs": ["https://www.facebook.com/jdgmineracao"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://jdgmineracao.com.br/#website",
+    "name": "JDG Mineração",
+    "url": "https://jdgmineracao.com.br",
+    "inLanguage": "pt-BR",
+    "publisher": {
+      "@id": "https://jdgmineracao.com.br/#organization"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://jdgmineracao.com.br/"
+      }
+    ]
+  }
+]

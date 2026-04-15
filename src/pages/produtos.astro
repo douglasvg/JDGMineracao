@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTAFinal from '../components/home/CTAFinal.astro';
+import schemaData from '../schema/schema-produtos.json';
 import areiaFinaImg from '../../images/areia-fina.png';
 import areiaMediaImg from '../../images/areia-media.png';
 import areiaGrossaImg from '../../images/areia-grossa-produtos.png';
@@ -96,6 +97,7 @@ const comparisonRows = [
 <BaseLayout
   title="Produtos | JDG Mineração"
   description="Conheça as areias fina, média e grossa da JDG Mineração para acabamento, assentamento e estruturas."
+  schema={schemaData}
 >
   <section class="bg-[#0D1B2A]">
     <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8 lg:py-28">
