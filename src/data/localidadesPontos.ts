@@ -13,13 +13,16 @@ export type LocalidadePonto = {
   endereco?: string;
   bairro?: string;
   cep?: string;
+  /** Fora de /localidades e do cálculo de rota. O dado fica aqui para reativar. */
+  oculto?: boolean;
 };
 
-/** Fonte única para a página e para a API de rotas (índice = ordem padrão dos cards). */
+/** Fonte única. `localidadesPontosVisiveis` é o que a página e a API de rotas usam (índice = ordem dos cards). */
 export const localidadesPontos: LocalidadePonto[] = [
   {
     nome: 'Escritório e Depósito de União da Vitória',
     tipo: 'deposito',
+    oculto: true,
     endereco: 'BR 153, s/n, Sala 01',
     bairro: 'Bairro São Gabriel',
     cidade: 'União da Vitória – PR',
@@ -33,6 +36,7 @@ export const localidadesPontos: LocalidadePonto[] = [
   {
     nome: 'Extração União da Vitória',
     tipo: 'extracao',
+    oculto: true,
     cidade: 'União da Vitória – PR',
     telefone: '(42) 98815-8515',
     horario: 'Seg–Sex, 09:00 às 17:00',
@@ -65,3 +69,5 @@ export const localidadesPontos: LocalidadePonto[] = [
     lng: -50.521694,
   },
 ];
+
+export const localidadesPontosVisiveis = localidadesPontos.filter((ponto) => !ponto.oculto);

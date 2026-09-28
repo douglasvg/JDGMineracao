@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTAFinal from '../components/home/CTAFinal.astro';
-import { localidadesPontos } from '../data/localidadesPontos';
+import { localidadesPontosVisiveis } from '../data/localidadesPontos';
 import { Phone, Clock, ArrowUpRight } from 'lucide-react';
 import schemaData from '../schema/schema-localidades.json';
 
-const pontos = localidadesPontos;
+const pontos = localidadesPontosVisiveis;
 
 const tipoConfig = {
   deposito: {
@@ -100,7 +100,7 @@ const tipoConfig = {
         <input
           id="localidades-search"
           type="search"
-          placeholder="Ex.: São Mateus, União da Vitória..."
+          placeholder="Ex.: São Mateus do Sul..."
           autocomplete="off"
           data-local-search
           class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-[#393e92] focus:outline-none focus:ring-2 focus:ring-[#393e92]/20"

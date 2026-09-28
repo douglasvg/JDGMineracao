@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { localidadesPontos } from '../src/data/localidadesPontos';
+import { localidadesPontosVisiveis as localidadesPontos } from '../src/data/localidadesPontos';
 
 const ROUTES_MATRIX_URL = 'https://routes.googleapis.com/distanceMatrix/v2:computeRouteMatrix';
 
