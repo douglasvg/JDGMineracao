@@ -14,19 +14,19 @@
       "height": 120
     },
     "image": "https://jdgmineracao.com.br/og-image.jpg",
-    "telephone": "+55 42 98815-8515",
+    "telephone": "+55 42 93618-1325",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "BR 153, s/n, Sala 01, Bairro São Gabriel",
-      "addressLocality": "União da Vitória",
+      "streetAddress": "Rod. do Xisto, 590, Fluviópolis",
+      "addressLocality": "São Mateus do Sul",
       "addressRegion": "PR",
-      "postalCode": "84602-450",
+      "postalCode": "83900-000",
       "addressCountry": "BR"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": -26.21822,
-      "longitude": -51.13181
+      "latitude": -25.997264862060547,
+      "longitude": -50.58631896972656
     },
     "openingHoursSpecification": [
       {
@@ -78,7 +78,7 @@
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "sales",
-      "telephone": "+55 42 98815-8515",
+      "telephone": "+55 42 93618-1325",
       "availableLanguage": "Portuguese",
       "areaServed": "BR"
     },

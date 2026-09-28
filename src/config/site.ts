@@ -22,7 +22,7 @@ export const SOCIAL_LINKS = {
 } as const;
 
 /** E.164 sem + (ex: 5549999999999). */
-export const WHATSAPP_E164 = '5542988158515';
+export const WHATSAPP_E164 = '5542936181325';
 
 /** Texto pré-preenchido ao abrir o WhatsApp (widget e CTAs). */
 export const WHATSAPP_PREFILL =
